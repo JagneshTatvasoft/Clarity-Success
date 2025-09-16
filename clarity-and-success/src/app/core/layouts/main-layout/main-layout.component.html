@@ -1,0 +1,96 @@
+<div class="main-layout h-full flex flex-col">
+  <mat-sidenav-container class="sidenav-container flex-1">
+    <mat-sidenav
+      class="flex gap-3"
+      #snav
+      [mode]="isMobile() ? 'over' : 'side'"
+      [fixedInViewport]="isMobile()"
+    >
+      <div class="brand-name-container">
+        <p><span class="main-title">Clarity</span> & Successs</p>
+      </div>
+
+      <mat-tree class="my-3" #tree [dataSource]="navItems" [childrenAccessor]="childrenAccessor">
+        <mat-tree-node *matTreeNodeDef="let node" matTreeNodePadding>
+          <app-custom-sidenav
+            class="w-full"
+            [label]="node.label"
+            [icon]="node.icon"
+            [image]="node.image"
+            [link]="node.link"
+          >
+          </app-custom-sidenav>
+        </mat-tree-node>
+        <mat-tree-node *matTreeNodeDef="let node; when: hasChild" matTreeNodePadding>
+          <app-custom-sidenav
+            class="w-full"
+            [label]="node.label"
+            [icon]="node.icon"
+            [image]="node.image"
+            [expandable]="true"
+            [menu]="node.menu"
+            [expanded]="tree.isExpanded(node)"
+            (toggleExpand)="tree.toggle(node)"
+          >
+          </app-custom-sidenav>
+        </mat-tree-node>
+      </mat-tree>
+
+      <!-- <mat-tree class="my-3" #tree [dataSource]="navItems" [childrenAccessor]="childrenAccessor">
+      
+        <mat-tree-node *matTreeNodeDef="let node" matTreeNodePadding>
+          <app-custom-sidenav
+            class="w-full"
+            [label]="node.label"
+            [icon]="node.icon"
+            [image]="node.image"
+            [link]="node.link"
+          >
+          </app-custom-sidenav>
+        </mat-tree-node>
+
+      
+        <mat-tree-node *matTreeNodeDef="let node; when: hasChild" matTreeNodePadding>
+          <app-custom-sidenav
+            class="w-full"
+            [label]="node.label"
+            [icon]="node.icon"
+            [image]="node.image"
+            [expandable]="true"
+            [expanded]="tree.isExpanded(node)"
+            (toggleExpand)="tree.toggle(node)"
+          >
+          </app-custom-sidenav>
+        </mat-tree-node> -->
+
+      <!-- Node with menu -->
+      <!-- <mat-tree-node *matTreeNodeDef="let node; when: hasMenu" matTreeNodePadding>
+          <app-custom-sidenav
+            class="w-full"
+            [label]="node.menu.label"
+            [expandable]="true"
+            [expanded]="tree.isExpanded(node)"
+            (toggleExpand)="tree.toggle(node)"
+            [menu]="node.menu"
+          >
+          </app-custom-sidenav>
+        </mat-tree-node> -->
+      <!-- </mat-tree> -->
+    </mat-sidenav>
+
+    <mat-sidenav-content class="h-full">
+      <div class="flex flex-col h-full">
+        <mat-toolbar class="main-layout-toolbar">
+          <button mat-icon-button (click)="snav.toggle()">
+            <mat-icon>menu</mat-icon>
+          </button>
+        </mat-toolbar>
+        <!-- Router outlet should grow -->
+        <div class="grow">
+          <router-outlet></router-outlet>
+        </div>
+      </div>
+      <!-- <router-outlet></router-outlet> -->
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>

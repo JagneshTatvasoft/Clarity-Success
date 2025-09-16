@@ -1,0 +1,253 @@
+<form [formGroup]="group" class="flex flex-col justify-start gap-4 furtherd-data1-form">
+  
+  <!-- Categories -->
+  <p class="text-sm sm:text-base text-left font-medium">Categories</p>
+  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-x-2 gap-y-5 pb-4">
+    <!-- Category 1 -->
+    <div>
+      <mat-form-field appearance="outline" class="small">
+        <mat-label>Category 1</mat-label>
+        <mat-select formControlName="category1">
+          <mat-option value="de">De</mat-option>
+          <mat-option value="dr">Dr</mat-option>
+          <mat-option value="miss">Miss</mat-option>
+          <mat-option value="mrs">Mrs</mat-option>
+          <mat-option value="mr">Mr</mat-option>
+        </mat-select>
+        @if (group.get('category1')?.hasError('required')) {
+        <mat-error>Category 1 is required</mat-error>
+        }
+      </mat-form-field>
+    </div>
+
+    <!-- Category 2 -->
+    <div>
+      <mat-form-field appearance="outline" class="small">
+        <mat-label>Category 2</mat-label>
+        <mat-select formControlName="category2">
+          <mat-option value="de">De</mat-option>
+          <mat-option value="dr">Dr</mat-option>
+          <mat-option value="miss">Miss</mat-option>
+          <mat-option value="mrs">Mrs</mat-option>
+          <mat-option value="mr">Mr</mat-option>
+        </mat-select>
+        @if (group.get('category2')?.hasError('required')) {
+        <mat-error>Category 2 is required</mat-error>
+        }
+      </mat-form-field>
+    </div>
+
+    <!-- Category 3 -->
+    <div>
+      <mat-form-field appearance="outline" class="small">
+        <mat-label>Category 3</mat-label>
+        <mat-select formControlName="category3">
+          <mat-option value="de">De</mat-option>
+          <mat-option value="dr">Dr</mat-option>
+          <mat-option value="miss">Miss</mat-option>
+          <mat-option value="mrs">Mrs</mat-option>
+          <mat-option value="mr">Mr</mat-option>
+        </mat-select>
+        @if (group.get('category3')?.hasError('required')) {
+        <mat-error>Category 3 is required</mat-error>
+        }
+      </mat-form-field>
+    </div>
+
+    <!-- Category 4 -->
+    <div>
+      <mat-form-field appearance="outline" class="small">
+        <mat-label>Category 4</mat-label>
+        <mat-select formControlName="category4">
+          <mat-option value="de">De</mat-option>
+          <mat-option value="dr">Dr</mat-option>
+          <mat-option value="miss">Miss</mat-option>
+          <mat-option value="mrs">Mrs</mat-option>
+          <mat-option value="mr">Mr</mat-option>
+        </mat-select>
+        @if (group.get('category4')?.hasError('required')) {
+        <mat-error>Category 4 is required</mat-error>
+        }
+      </mat-form-field>
+    </div>
+
+    <!-- Category 5 -->
+    <div>
+      <mat-form-field appearance="outline" class="small">
+        <mat-label>Category 5</mat-label>
+        <mat-select formControlName="category5">
+          <mat-option value="de">De</mat-option>
+          <mat-option value="dr">Dr</mat-option>
+          <mat-option value="miss">Miss</mat-option>
+          <mat-option value="mrs">Mrs</mat-option>
+          <mat-option value="mr">Mr</mat-option>
+        </mat-select>
+        @if (group.get('category5')?.hasError('required')) {
+        <mat-error>Category 5 is required</mat-error>
+        }
+      </mat-form-field>
+    </div>
+
+    <!-- Category 6 -->
+    <div>
+      <mat-form-field appearance="outline" class="small">
+        <mat-label>Category 6</mat-label>
+        <mat-select formControlName="category6">
+          <mat-option value="de">De</mat-option>
+          <mat-option value="dr">Dr</mat-option>
+          <mat-option value="miss">Miss</mat-option>
+          <mat-option value="mrs">Mrs</mat-option>
+          <mat-option value="mr">Mr</mat-option>
+        </mat-select>
+        @if (group.get('category6')?.hasError('required')) {
+        <mat-error>Category 6 is required</mat-error>
+        }
+      </mat-form-field>
+    </div>
+
+    <!-- Category 7 -->
+    <div>
+      <mat-form-field appearance="outline" class="small">
+        <mat-label>Category 7</mat-label>
+        <mat-select formControlName="category7">
+          <mat-option value="de">De</mat-option>
+          <mat-option value="dr">Dr</mat-option>
+          <mat-option value="miss">Miss</mat-option>
+          <mat-option value="mrs">Mrs</mat-option>
+          <mat-option value="mr">Mr</mat-option>
+        </mat-select>
+        @if (group.get('category7')?.hasError('required')) {
+        <mat-error>Category 7 is required</mat-error>
+        }
+      </mat-form-field>
+    </div>
+
+    <!-- Category 8 -->
+    <div>
+      <mat-form-field appearance="outline" class="small">
+        <mat-label>Category 8</mat-label>
+        <mat-select formControlName="category8">
+          <mat-option value="de">De</mat-option>
+          <mat-option value="dr">Dr</mat-option>
+          <mat-option value="miss">Miss</mat-option>
+          <mat-option value="mrs">Mrs</mat-option>
+          <mat-option value="mr">Mr</mat-option>
+        </mat-select>
+        @if (group.get('category8')?.hasError('required')) {
+        <mat-error>Category 8 is required</mat-error>
+        }
+      </mat-form-field>
+    </div>
+
+    <!-- Category 9 -->
+    <div>
+      <mat-form-field appearance="outline" class="small">
+        <mat-label>Category 9</mat-label>
+        <mat-select formControlName="category9">
+          <mat-option value="de">De</mat-option>
+          <mat-option value="dr">Dr</mat-option>
+          <mat-option value="miss">Miss</mat-option>
+          <mat-option value="mrs">Mrs</mat-option>
+          <mat-option value="mr">Mr</mat-option>
+        </mat-select>
+        @if (group.get('category9')?.hasError('required')) {
+        <mat-error>Category 9 is required</mat-error>
+        }
+      </mat-form-field>
+    </div>
+
+    <!-- Category 10 -->
+    <div>
+      <mat-form-field appearance="outline" class="small">
+        <mat-label>Category 10</mat-label>
+        <mat-select formControlName="category10">
+          <mat-option value="de">De</mat-option>
+          <mat-option value="dr">Dr</mat-option>
+          <mat-option value="miss">Miss</mat-option>
+          <mat-option value="mrs">Mrs</mat-option>
+          <mat-option value="mr">Mr</mat-option>
+        </mat-select>
+        @if (group.get('category10')?.hasError('required')) {
+        <mat-error>Category 10 is required</mat-error>
+        }
+      </mat-form-field>
+    </div>
+  </div>
+
+  <!-- Profession & Hobby -->
+  <p class="text-sm sm:text-base text-left font-medium">Profession</p>
+  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-x-2 gap-y-5">
+    <div>
+      <mat-form-field appearance="outline" class="small">
+        <mat-label>Profession</mat-label>
+        <mat-select formControlName="profession">
+          <mat-option value="de">De</mat-option>
+          <mat-option value="dr">Dr</mat-option>
+          <mat-option value="miss">Miss</mat-option>
+          <mat-option value="mrs">Mrs</mat-option>
+          <mat-option value="mr">Mr</mat-option>
+        </mat-select>
+        @if (group.get('profession')?.hasError('required')) {
+        <mat-error> Profession is required </mat-error>
+        }
+      </mat-form-field>
+    </div>
+
+    <div>
+      <mat-form-field appearance="outline" class="small">
+        <mat-label>Hobby</mat-label>
+        <mat-select formControlName="hobby">
+          <mat-option value="sports">Sports</mat-option>
+          <mat-option value="music">Music</mat-option>
+          <mat-option value="reading">Reading</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <div>
+      <mat-form-field appearance="outline" class="small">
+        <mat-label>Customer Card Type</mat-label>
+        <mat-select formControlName="customerCardType">
+          <mat-option value="silver">Silver</mat-option>
+          <mat-option value="gold">Gold</mat-option>
+          <mat-option value="platinum">Platinum</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <div>
+      <mat-form-field appearance="outline" class="w-full small">
+        <mat-label>Customer Card No.</mat-label>
+        <input matInput formControlName="customerCardNo" />
+        @if (group.get('customerCardNo')?.hasError('pattern')) {
+        <mat-error> Must be numeric </mat-error>
+        }
+      </mat-form-field>
+    </div>
+
+    <!-- Referred By -->
+    <div>
+      <mat-form-field appearance="outline" class="w-full small">
+        <mat-label>Referred By</mat-label>
+        <input matInput formControlName="referredBy" readonly />
+        <button class="pe-1" mat-icon-button type="button" matSuffix (click)="onAddClick()">
+          <mat-icon>add</mat-icon>
+        </button>
+        <button class="pe-3" mat-icon-button type="button" matSuffix (click)="onCancelClick()">
+          <mat-icon>cancel</mat-icon>
+        </button>
+      </mat-form-field>
+    </div>
+  </div>
+
+  <!-- Advertising -->
+  <p class="text-sm sm:text-base text-left font-medium">Advertising</p>
+  <div class="flex flex-col sm:flex-row gap-4" formGroupName="advertising">
+    <mat-checkbox formControlName="none">None</mat-checkbox>
+    <mat-checkbox formControlName="mail">Mail</mat-checkbox>
+    <mat-checkbox formControlName="email">Email</mat-checkbox>
+    <mat-checkbox formControlName="sms">SMS</mat-checkbox>
+    <mat-checkbox formControlName="call">Call</mat-checkbox>
+    <mat-checkbox formControlName="dataProtectionDecl">Data Protection Decl.</mat-checkbox>
+  </div>
+</form>

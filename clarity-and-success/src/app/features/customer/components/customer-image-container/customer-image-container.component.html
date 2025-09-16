@@ -1,0 +1,50 @@
+<div class="flex flex-col gap-2">
+  <div class="flex-grow align-center image-container p-4">
+    @if(previewUrls.length){
+    <img [src]="previewUrls[currentIndex]" alt="Uploaded image preview" />
+    }
+    <input #fileInput type="file" accept="image/*" (change)="onFileSelected($event)" hidden />
+  </div>
+  <div class="grid grid-cols-4 gap-1">
+    <div class="flex gap-1">
+      <button type="button" class="img-nav-button flex-grow">
+        <mat-icon> search </mat-icon>
+      </button>
+      <button type="button" class="img-nav-button flex-grow">
+        <mat-icon> add </mat-icon>
+      </button>
+    </div>
+    <button type="button" class="img-nav-button" (click)="showPrevious()">
+      <mat-icon> navigate_before </mat-icon>
+    </button>
+    <button type="button" class="img-nav-button" (click)="showNext()">
+      <mat-icon> navigate_next </mat-icon>
+    </button>
+    <button type="button" class="img-nav-button" (click)="copyImageToClipboard()">
+      <mat-icon> file_copy </mat-icon>
+    </button>
+    <button type="button" class="img-nav-button">
+      <mat-icon> image </mat-icon>
+    </button>
+    <button type="button" class="img-nav-button" (click)="pasteImage()">
+      <mat-icon> file_copy </mat-icon>
+    </button>
+    <div class="flex gap-1">
+      <button type="button" class="img-nav-button flex-grow">
+        <mat-icon> cloud_download </mat-icon>
+      </button>
+      <button type="button" class="img-nav-button flex-grow" (click)="fileInput.click()">
+        <mat-icon> cloud_upload </mat-icon>
+      </button>
+    </div>
+    <button type="button" class="img-nav-button" (click)="removeCurrent()">
+      <mat-icon> cancel </mat-icon>
+    </button>
+    <div type="button" class="col-span-full text-left">
+      <p class="img-text">Created:</p>
+    </div>
+    <div type="button" class="col-span-full text-left">
+      <p class="img-text">Changed:</p>
+    </div>
+  </div>
+</div>

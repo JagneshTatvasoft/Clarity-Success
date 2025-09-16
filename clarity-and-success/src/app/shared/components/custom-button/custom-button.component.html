@@ -1,0 +1,8 @@
+<button class="custom-button" mat-raised-button [ngClass]="[type, variant, isActive ? 'active' : '']" [type]="buttonType"  [disabled]="disabled"  [matTooltip]="disabled ? tooltip : ''" [style.width]="width"> 
+    @if (icon) {
+    <mat-icon class="text-center">{{ icon }}</mat-icon>
+    }
+    @if(label){
+        {{ label }}
+    }
+</button>

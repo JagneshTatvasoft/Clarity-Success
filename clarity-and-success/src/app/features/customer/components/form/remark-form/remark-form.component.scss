@@ -1,0 +1,27 @@
+// span {
+//   &.highlight {
+//     background-color: yellow;
+//     padding: 0 2px;
+//   }
+// }
+
+.highlight {
+  background-color: yellow !important;
+  padding: 0 2px;
+}
+
+.highlight.active {
+  background-color: orange;
+}
+
+.editor{
+    height: 300px;
+    border: 0.1rem solid var(--border-color);
+    border-radius: 0.5rem;
+    // display: flex;
+    text-align: left;
+    width: 100%;
+    padding: 0.5rem;
+    overflow-y: auto;
+   
+}

@@ -1,0 +1,18 @@
+.image-container{
+    border: 0.1rem solid var(--secondary-border-color)
+}
+
+.img-nav-button{
+    align-items: center;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    padding: 0.2rem;
+    background-color: var(--primary-background);
+    border-radius: 0.5rem;
+}
+
+.img-text{
+    font-size: 0.8rem;
+    color:#1b4965b2;
+}

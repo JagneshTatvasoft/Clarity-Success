@@ -1,0 +1,44 @@
+<form [formGroup]="group" class="flex flex-col gap-4">
+
+  <div class="grid grid-cols-1 sm:grid-cols-3 xl:grid-cols-4">
+    <!-- Search -->
+    <div>
+      <mat-form-field appearance="outline" class="w-full small">
+        <mat-label>Search</mat-label>
+        <input matInput formControlName="searchTerm" />
+      </mat-form-field>
+    </div>
+
+    <!-- Search button -->
+    <div class="flex justify-start sm:px-4">
+      <app-custom-button
+        label="Search"
+        type="navigation"
+        variant="filled"
+        (click)="searchContent()"
+      ></app-custom-button>
+    </div>
+
+    <!-- Font size -->
+    <div class="flex items-center justify-end gap-2 xl:col-span-2">
+      <mat-icon>format_size</mat-icon>
+      <mat-slider min="12" max="22" step="2">
+        <input
+          matSliderThumb
+          formControlName="fontSize"
+          (input)="applyFontSize()"
+        />
+      </mat-slider>
+    </div>
+  </div>
+
+  <!-- Editable Content -->
+  <div
+    #editableContent
+    contenteditable="true"
+    class="editor"
+    [style.fontSize.px]="group.get('fontSize')?.value"
+    (input)="updateContent($event)"
+  >
+  </div>
+</form>

@@ -1,0 +1,18 @@
+.spacer {
+  flex: 1 1 auto;
+}
+
+.bottom-navbar {
+  position: sticky;
+  z-index: 10;
+  min-height: 3.5rem;
+  border-radius: 0.5rem;
+  background: white;
+  // border: 0.1rem solid var(--secondary-border-color);
+  padding: 8px;
+}
+
+.main-content{
+  height: calc(100vh - 13.5rem);
+  overflow-y: auto;
+}

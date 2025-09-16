@@ -1,0 +1,106 @@
+<form>
+  <div class="worklog-dialog">
+    <div mat-dialog-title>
+      <div>
+        <p>Customer Search</p>
+      </div>
+      <div class="spacer"></div>
+      <div>
+        <button mat-icon-button mat-dialog-close aria-label="Close dialog">
+          <mat-icon>close</mat-icon>
+        </button>
+      </div>
+    </div>
+    <mat-dialog-content>
+      <div class="py-4 flex flex-col">
+        <div class="grid grid-cols-5 gap-x-3">
+          <div>
+            <mat-form-field appearance="outline" class="small">
+              <mat-label>Customer No.</mat-label>
+              <input matInput />
+            </mat-form-field>
+          </div>
+          <div>
+            <mat-form-field appearance="outline" class="small">
+              <mat-label>Company</mat-label>
+              <input matInput />
+            </mat-form-field>
+          </div>
+          <div>
+            <mat-form-field appearance="outline" class="small">
+              <mat-label>First name</mat-label>
+              <input matInput />
+            </mat-form-field>
+          </div>
+          <div>
+            <mat-form-field appearance="outline" class="small">
+              <mat-label>Surname</mat-label>
+              <input matInput />
+            </mat-form-field>
+          </div>
+          <div>
+            <mat-form-field appearance="outline" class="small">
+              <mat-label>Street/No.</mat-label>
+              <input matInput />
+            </mat-form-field>
+          </div>
+          <div>
+            <mat-form-field appearance="outline" class="small">
+              <mat-label>Postcode</mat-label>
+              <input matInput />
+            </mat-form-field>
+          </div>
+          <div>
+            <mat-form-field appearance="outline" class="small">
+              <mat-label>Country</mat-label>
+              <input matInput />
+            </mat-form-field>
+          </div>
+          <div>
+            <mat-form-field appearance="outline" class="small">
+              <mat-label>City</mat-label>
+              <input matInput />
+            </mat-form-field>
+          </div>
+          <div>
+            <mat-form-field appearance="outline" class="small">
+              <mat-label>Telephone</mat-label>
+              <input matInput />
+            </mat-form-field>
+          </div>
+          <div>
+            <mat-form-field appearance="outline" class="small">
+              <mat-label>Email</mat-label>
+              <input matInput type="email" />
+            </mat-form-field>
+          </div>
+        </div>
+        <app-custom-table [dataSource]="customer" [columns]="columns()" [isSelectable]="true"></app-custom-table>
+      </div>
+    </mat-dialog-content>
+    <mat-dialog-actions class="flex jusd gap-3">
+      <app-custom-button
+        label="Save"
+        type="primary"
+        variant="filled"
+        buttonType="submit"
+      ></app-custom-button>
+      <div class="spacer"></div>
+      <button px-3 mat-icon-button type="button" (click)="openColumnSelector()">
+        <mat-icon>ballot</mat-icon>
+      </button>
+      <app-custom-button
+        label="Search"
+        type="primary"
+        variant="outlined"
+        buttonType="reset"
+      ></app-custom-button>
+      <app-custom-button
+        label="Reset"
+        type="primary"
+        variant="outlined"
+        buttonType="reset"
+      ></app-custom-button>
+    </mat-dialog-actions>
+  </div>
+</form>

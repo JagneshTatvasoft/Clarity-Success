@@ -1,0 +1,135 @@
+<form [formGroup]="group" class="flex flex-col justify-start gap-4 further-data2-form">
+
+  <!-- Identification -->
+  <p class="text-sm sm:text-base text-left font-medium">Identification</p>
+  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-x-2 gap-y-5">
+
+    <!-- Gender -->
+    <div class="flex items-center gap-4 col-span-full">
+      <span class="font-medium">Gender:</span>
+      <mat-radio-group formControlName="gender" class="flex gap-4">
+        <mat-radio-button value="male">Male</mat-radio-button>
+        <mat-radio-button value="female">Female</mat-radio-button>
+        <mat-radio-button value="neutral">Neutral</mat-radio-button>
+      </mat-radio-group>
+      <!-- @if (group.get('gender')?.hasError('required')) {
+        <mat-error>Gender is required</mat-error>
+      } -->
+    </div>
+
+    <!-- Place of birth/citizenship -->
+    <div>
+      <mat-form-field appearance="outline" class="w-full small">
+        <mat-label>Place of birth/citizenship</mat-label>
+        <input matInput formControlName="placeOfBirth" />
+        @if (group.get('placeOfBirth')?.hasError('required')) {
+          <mat-error>Place of birth is required</mat-error>
+        }
+      </mat-form-field>
+    </div>
+
+    <!-- Type of identification -->
+    <div>
+      <mat-form-field appearance="outline" class="w-full small">
+        <mat-label>Type of identification</mat-label>
+        <mat-select formControlName="idType" required>
+          <mat-option value="passport">Passport</mat-option>
+          <mat-option value="id-card">ID Card</mat-option>
+          <mat-option value="driver-license">Driver License</mat-option>
+        </mat-select>
+        @if (group.get('idType')?.hasError('required')) {
+          <mat-error>Type of identification is required</mat-error>
+        }
+      </mat-form-field>
+    </div>
+
+    <!-- Identification No -->
+    <div>
+      <mat-form-field appearance="outline" class="w-full small">
+        <mat-label>Identification No.</mat-label>
+        <input matInput formControlName="idNo" />
+        @if (group.get('idNo')?.hasError('required')) {
+          <mat-error>Identification number is required</mat-error>
+        }
+      </mat-form-field>
+    </div>
+
+    <!-- Issuing authority -->
+    <div>
+      <mat-form-field appearance="outline" class="w-full small">
+        <mat-label>Issuing authority</mat-label>
+        <input matInput formControlName="issuingAuthority" />
+      </mat-form-field>
+    </div>
+
+    <!-- Proof of address -->
+    <div>
+      <mat-form-field appearance="outline" class="w-full small">
+        <mat-label>Proof of address Details</mat-label>
+        <input matInput formControlName="proofOfAddress" />
+      </mat-form-field>
+    </div>
+  </div>
+
+  <!-- Partner -->
+  <p class="text-sm sm:text-base text-left font-medium">Partner</p>
+  <div formGroupName="partner"
+       class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-x-2 gap-y-5">
+
+    <!-- Salutation -->
+    <div>
+      <mat-form-field appearance="outline" class="w-full small">
+        <mat-label>Salutation</mat-label>
+        <mat-select formControlName="salutation">
+          <mat-option value="mr">Mr</mat-option>
+          <mat-option value="mrs">Mrs</mat-option>
+          <mat-option value="miss">Miss</mat-option>
+          <mat-option value="dr">Dr</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <!-- Title -->
+    <div>
+      <mat-form-field appearance="outline" class="w-full small">
+        <mat-label>Title</mat-label>
+        <mat-select formControlName="title">
+          <mat-option value="prof">Prof</mat-option>
+          <mat-option value="dr">Dr</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <!-- First name -->
+    <div>
+      <mat-form-field appearance="outline" class="w-full small">
+        <mat-label>First name</mat-label>
+        <input matInput formControlName="firstName" />
+      </mat-form-field>
+    </div>
+
+    <!-- Surname -->
+    <div>
+      <mat-form-field appearance="outline" class="w-full small">
+        <mat-label>Surname</mat-label>
+        <input matInput formControlName="surname" />
+      </mat-form-field>
+    </div>
+
+    <!-- Date of birth -->
+    <div>
+      <mat-form-field appearance="outline" class="w-full small">
+        <mat-label>Date of birth</mat-label>
+        <input matInput type="date" formControlName="dob" />
+      </mat-form-field>
+    </div>
+
+    <!-- Age -->
+    <div>
+      <mat-form-field appearance="outline" class="w-full small">
+        <mat-label>Age (year/month)</mat-label>
+        <input matInput readonly formControlName="age" />
+      </mat-form-field>
+    </div>
+  </div>
+</form>

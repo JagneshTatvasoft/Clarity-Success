@@ -1,0 +1,63 @@
+<form class="flex flex-col justify-start gap-4 appointments-form">
+  <p class="text-sm sm:text-base text-left font-medium">Categories</p>
+  <app-custom-table
+    [dataSource]="correspondence"
+    [columns]="corresepondenceColumn"
+  ></app-custom-table>
+    <div class="flex w-full align-start gap-4">
+    <app-custom-button
+      label="Add"
+      icon="add"
+      type="navigation"
+      variant="filled"
+    ></app-custom-button>
+    <app-custom-button
+      label="Edit"
+      icon="edit"
+      type="navigation"
+      variant="filled"
+    ></app-custom-button>
+    <app-custom-button
+      label="Delete"
+      icon="delete"
+      type="navigation"
+      variant="filled"
+    ></app-custom-button>
+  </div>
+
+  <p class="text-sm sm:text-base text-left font-medium">Appointments</p>
+    <app-custom-table
+      [dataSource]="appointmnets"
+      [columns]="columns"
+      [collapsed]="!showPictures"
+    ></app-custom-table>
+  <div class="flex flex-col sm:flex-row w-full align-start gap-4">
+    <app-custom-button
+      label="Add"
+      icon="add"
+      type="navigation"
+      variant="filled"
+    ></app-custom-button>
+    <app-custom-button
+      label="Edit"
+      icon="edit"
+      type="navigation"
+      variant="filled"
+    ></app-custom-button>
+    <app-custom-button
+      label="Delete"
+      icon="delete"
+      type="navigation"
+      variant="filled"
+    ></app-custom-button>
+    <app-custom-button
+      label="Completed"
+      icon="check"
+      type="navigation"
+      variant="filled"
+    ></app-custom-button>
+    <mat-checkbox [checked]="showPictures" (change)="onExpandChange($event)">
+      Show Pictures
+    </mat-checkbox>
+  </div>
+</form>

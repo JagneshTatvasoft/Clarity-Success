@@ -1,0 +1,15 @@
+.bottom-navbar {
+  position: sticky;
+  bottom: 0;
+  z-index: 10;
+  min-height: 3.5rem;
+  border-radius: 0.5rem;
+  background: var(--secondary-background);
+  // border: 0.1rem solid var(--secondary-border-color);
+  padding: 8px 10px;
+}
+
+.main-content{
+  height: calc(100vh - 13.5rem);
+  overflow-y: auto;
+}

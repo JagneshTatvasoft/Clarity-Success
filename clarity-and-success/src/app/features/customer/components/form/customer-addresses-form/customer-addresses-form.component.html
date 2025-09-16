@@ -1,0 +1,173 @@
+<form [formGroup]="group" class="flex flex-col justify-start gap-4 customer-addresses-form">
+  <p class="text-sm sm:text-base text-left font-medium">Wholesale</p>
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 pb-4">
+    <!-- Field Service -->
+    <mat-form-field appearance="outline" class="w-full small">
+      <mat-label>Field service</mat-label>
+      <mat-select formControlName="fieldService">
+        <mat-option *ngFor="let option of fieldServices" [value]="option">
+          {{ option }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <!-- Contact Person -->
+    <mat-form-field appearance="outline" class="w-full small">
+      <mat-label>Contact person</mat-label>
+      <mat-select formControlName="contactPerson">
+        <mat-option *ngFor="let person of contactPersons" [value]="person">
+          {{ person }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <!-- Special Price -->
+    <div class="flex items-center gap-4">
+      <mat-checkbox formControlName="specialPrice">Special price</mat-checkbox>
+      <mat-checkbox formControlName="electronicDeliveryNote">elec. delivery note</mat-checkbox>
+    </div>
+  </div>
+
+  <p class="text-sm sm:text-base text-left font-medium">Language</p>
+  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4 pb-4">
+    <!-- Language of the printout -->
+    <mat-form-field appearance="outline" class="w-full small">
+      <mat-label>Language of the printout</mat-label>
+      <mat-select formControlName="languagePrintout">
+        <mat-option *ngFor="let lang of languages" [value]="lang">
+          {{ lang }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <!-- Language of the article -->
+    <mat-form-field appearance="outline" class="w-full small">
+      <mat-label>Language of the article</mat-label>
+      <mat-select formControlName="languageArticle">
+        <mat-option *ngFor="let lang of languages" [value]="lang">
+          {{ lang }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+
+  <!-- Invoice addresses and delivery addresses order management -->
+  <p class="text-sm sm:text-base text-left font-medium">
+    Invoice addresses and delivery addresses order management
+  </p>
+  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-x-2 gap-y-5">
+    <!-- Customer No -->
+    <div class="flex items-center gap-2">
+      <mat-form-field appearance="outline" class="small w-full">
+        <mat-label>Customer No.</mat-label>
+        <input matInput />
+        <button class="px-3" mat-icon-button type="button" matSuffix>
+          <mat-icon>search</mat-icon>
+        </button>
+      </mat-form-field>
+    </div>
+
+    <div>here show some component to show selected data may be we can use table</div>
+
+    <!-- Delivery & Invoice Address Checkboxes -->
+    <div class="flex items-center gap-4 col-span-full">
+      <mat-checkbox>Delivery Address</mat-checkbox>
+      <mat-checkbox>Invoice Address</mat-checkbox>
+    </div>
+
+    <!-- Comment -->
+    <div class="col-span-full">
+      <mat-form-field appearance="outline" class="w-full small">
+        <mat-label>Comment</mat-label>
+        <textarea matInput rows="2"></textarea>
+      </mat-form-field>
+    </div>
+  </div>
+
+  <div class="flex w-full align-start gap-4">
+    <app-custom-button
+      label="Add"
+      icon="add"
+      type="navigation"
+      variant="filled"
+    ></app-custom-button>
+    <app-custom-button
+      label="Edit"
+      icon="edit"
+      type="navigation"
+      variant="outlined"
+    ></app-custom-button>
+    <app-custom-button
+      label="Delete"
+      icon="delete"
+      type="navigation"
+      variant="filled"
+    ></app-custom-button>
+  </div>
+
+  <app-custom-table
+    class="pb-4"
+    [dataSource]="billingAddress"
+    [columns]="columns"
+  ></app-custom-table>
+
+  <!-- Customer Prices -->
+  <p class="text-sm sm:text-base text-left font-medium">Customer Prices</p>
+  <div class="flex flex-col gap-4">
+    <!-- First Row: Customer No + Button -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4 justify-start">
+      <mat-form-field appearance="outline" class="small w-full">
+        <mat-label>Customer No.</mat-label>
+        <input matInput />
+        <button class="px-3" mat-icon-button type="button" matSuffix>
+          <mat-icon>search</mat-icon>
+        </button>
+      </mat-form-field>
+      <app-custom-button
+        class="justify-start flex"
+        label="Copy Pricing"
+        icon="note_add"
+        type="navigation"
+        variant="filled"
+      ></app-custom-button>
+    </div>
+
+    <!-- Second Row: Remaining fields -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4">
+      <!-- Art. No. Suppl. -->
+      <div>
+        <mat-form-field appearance="outline" class="w-full small">
+          <mat-label>Art. No. Suppl.</mat-label>
+          <input matInput />
+        </mat-form-field>
+      </div>
+
+      <!-- Price -->
+      <div>
+        <mat-form-field appearance="outline" class="w-full small">
+          <mat-label>Price</mat-label>
+          <input matInput />
+        </mat-form-field>
+      </div>
+
+      <!-- Discount -->
+      <div>
+        <mat-form-field appearance="outline" class="w-full small">
+          <mat-label>Discount</mat-label>
+          <input matInput />
+        </mat-form-field>
+      </div>
+
+      <!-- VAT -->
+      <div class="flex items-center">
+        <mat-checkbox>VAT</mat-checkbox>
+      </div>
+    </div>
+  </div>
+
+  <app-custom-table
+    class="pb-4"
+    [dataSource]="customerPricing"
+    [columns]="customerPricingColumns"
+  ></app-custom-table>
+</form>

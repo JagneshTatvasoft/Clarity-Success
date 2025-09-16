@@ -1,0 +1,77 @@
+<!-- @if(!menu){
+<a
+  class="flex gap-3"
+  mat-list-item
+  [routerLink]="link"
+  routerLinkActive="active"
+  [routerLinkActiveOptions]="{ exact: false }"
+  (click)="onNodeClick($event)"
+>
+  @if (image) {
+  <img
+    [src]="'assets/images/' + image + '.png'"
+    alt="{{ label }}"
+    class="sidebar-icon object-contain"
+  />
+  } @if (icon) {
+  <mat-icon>{{ icon }}</mat-icon>
+  }
+
+  <span class="text-center">{{ label }}</span>
+  <span class="spacer"></span>
+
+  @if(expandable){
+  <mat-icon>
+    {{ expanded ? 'expand_more' : 'chevron_right' }}
+  </mat-icon>
+  }
+</a>
+} @else{
+<a
+  class="flex gap-3"
+  mat-list-item
+  (click)="onNodeClick($event)"
+  [matMenuTriggerFor]="menuTemplate"
+>
+  <span class="text-center">{{ label }}</span>
+  <span class="spacer"></span>
+</a>
+}
+
+<mat-menu #menuTemplate="matMenu" xPosition="after">
+  <button *ngFor="let item of menu" mat-menu-item [routerLink]="item.link">
+    {{ item.label }}
+  </button>
+</mat-menu> -->
+
+<a
+  class="flex gap-3"
+  mat-list-item
+  [routerLink]="link"
+  routerLinkActive="active"
+  [routerLinkActiveOptions]="{ exact: false }"
+  (click)="expandable && !menu ? toggleExpand.emit() : null"
+>
+  @if (image) {
+  <img
+    [src]="'assets/images/' + image + '.png'"
+    alt="{{ label }}"
+    class="sidebar-icon object-contain"
+  />
+  } @if (icon) {
+  <mat-icon>{{ icon }}</mat-icon>
+  }
+
+  <span class="text-center">{{ label }}</span>
+  <span class="spacer"></span>
+  
+  <mat-icon *ngIf="expandable && !menu">
+    {{ expanded ? 'expand_more' : 'chevron_right' }}
+  </mat-icon>
+</a>
+
+<mat-menu #menuTemplate="matMenu" xPosition="after">
+  <button *ngFor="let item of menu" mat-menu-item [routerLink]="item.link">
+    {{ item.label }}
+  </button>
+</mat-menu>

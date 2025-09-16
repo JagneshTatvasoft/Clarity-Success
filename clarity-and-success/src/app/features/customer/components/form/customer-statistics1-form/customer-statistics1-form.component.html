@@ -1,0 +1,350 @@
+<form class="flex flex-col justify-start gap-4 statistics-form">
+  <div class="grid grid-cols-1 lg:grid-cols-2 pb-5">
+    <div>
+      <p class="text-sm sm:text-base text-left font-medium pb-4">Statistics</p>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-2 gap-y-5">
+        <!-- First/last date of recording -->
+        <div>
+          <mat-form-field appearance="outline" class="w-full small">
+            <mat-label>First date of recording</mat-label>
+            <input matInput readonly value="19-11-2020" />
+          </mat-form-field>
+        </div>
+        <div>
+          <mat-form-field appearance="outline" class="w-full small">
+            <mat-label>Last date of recording</mat-label>
+            <input matInput readonly value="19-11-2020" />
+          </mat-form-field>
+        </div>
+
+        <!-- Main provider -->
+        <div>
+          <mat-form-field appearance="outline" class="w-full small">
+            <mat-label>Main provider</mat-label>
+            <input matInput readonly value="Provider Name" />
+          </mat-form-field>
+        </div>
+
+        <!-- Main provider amount -->
+        <div>
+          <mat-form-field appearance="outline" class="w-full small">
+            <mat-label>Main provider - amount</mat-label>
+            <input matInput readonly value="£0.00" />
+          </mat-form-field>
+        </div>
+
+        <!-- First/last order date -->
+        <div>
+          <mat-form-field appearance="outline" class="w-full small">
+            <mat-label>First order date</mat-label>
+            <input matInput readonly value="19-11-2020" />
+          </mat-form-field>
+        </div>
+        <div>
+          <mat-form-field appearance="outline" class="w-full small">
+            <mat-label>Last order date</mat-label>
+            <input matInput readonly value="19-11-2020" />
+          </mat-form-field>
+        </div>
+
+        <!-- First/last sales date -->
+        <div>
+          <mat-form-field appearance="outline" class="w-full small">
+            <mat-label>First sales date</mat-label>
+            <input matInput readonly value="19-11-2020" />
+          </mat-form-field>
+        </div>
+        <div>
+          <mat-form-field appearance="outline" class="w-full small">
+            <mat-label>Last sales date</mat-label>
+            <input matInput readonly value="19-11-2020" />
+          </mat-form-field>
+        </div>
+
+        <!-- Main sales person -->
+        <div>
+          <mat-form-field appearance="outline" class="w-full small">
+            <mat-label>Main sales person</mat-label>
+            <input matInput readonly value="John Doe" />
+          </mat-form-field>
+        </div>
+
+        <!-- Turnover main sales person -->
+        <div>
+          <mat-form-field appearance="outline" class="w-full small">
+            <mat-label>Turnover main sales person</mat-label>
+            <input matInput readonly value="£0.00" />
+          </mat-form-field>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <p class="text-sm sm:text-base text-left font-medium">Turnover</p>
+  <div class="grid grid-cols-1 lg:grid-cols-2 gap-x-5 gap-y-5 pb-5 ">
+    <!-- Total qty / turnover -->
+    <div class="flex flex-col sm:flex-row items-center justify-start gap-2 w-full">
+      <span class="sm:w-56 w-full text-sm font-medium text-left pb-2 sm:pb-0">
+        Total qty / turnover:
+      </span>
+      <div class="grid grid-cols-3 gap-2 flex-1">
+        <mat-form-field appearance="outline" class="small w-full">
+          <mat-label>Total Qty</mat-label>
+          <input matInput readonly value="6" />
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="small w-full col-span-2">
+          <mat-label>Turnover</mat-label>
+          <input matInput readonly value="£795.84" />
+        </mat-form-field>
+      </div>
+    </div>
+
+    <!-- Last amount/turnover -->
+    <div class="flex flex-col sm:flex-row items-center justify-start gap-2 w-full">
+      <span class="sm:w-56 w-full text-sm font-medium text-left pb-2 sm:pb-0">
+        Last amount/turnover:
+      </span>
+      <div class="grid grid-cols-3 gap-2 flex-1">
+        <mat-form-field appearance="outline" class="small w-full">
+          <mat-label>Amount</mat-label>
+          <input matInput readonly value="5" />
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="small w-full col-span-2">
+          <mat-label>Turnover</mat-label>
+          <input matInput readonly value="£150.00" />
+        </mat-form-field>
+      </div>
+    </div>
+
+    <!-- Amount/turnover a year -->
+    <div class="flex flex-col sm:flex-row items-center justify-start gap-2 w-full">
+      <span class="sm:w-56 w-full text-sm font-medium text-left pb-2 sm:pb-0">
+        Amount/turnover a year:
+      </span>
+      <div class="grid grid-cols-3 gap-2 flex-1">
+        <mat-form-field appearance="outline" class="small w-full">
+          <mat-label>Amount</mat-label>
+          <input matInput readonly value="0" />
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="small w-full col-span-2">
+          <mat-label>Turnover</mat-label>
+          <input matInput readonly value="£0.00" />
+        </mat-form-field>
+      </div>
+    </div>
+
+    <!-- Amount/turnover articles -->
+    <div class="flex flex-col sm:flex-row items-center justify-start gap-2 w-full">
+      <span class="sm:w-56 w-full text-sm font-medium text-left pb-2 sm:pb-0">
+        Amount/turnover articles:
+      </span>
+      <div class="grid grid-cols-3 gap-2 flex-1">
+        <mat-form-field appearance="outline" class="small w-full">
+          <mat-label>Amount</mat-label>
+          <input matInput readonly value="6" />
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="small w-full col-span-2">
+          <mat-label>Turnover</mat-label>
+          <input matInput readonly value="£795.84" />
+        </mat-form-field>
+      </div>
+    </div>
+
+    <!-- Amount/turnover pool articles -->
+    <div class="flex flex-col sm:flex-row items-center justify-start gap-2 w-full">
+      <span class="sm:w-56 w-full text-sm font-medium text-left pb-2 sm:pb-0">
+        Amount/turnover pool articles:
+      </span>
+      <div class="grid grid-cols-3 gap-2 flex-1">
+        <mat-form-field appearance="outline" class="small w-full">
+          <mat-label>Amount</mat-label>
+          <input matInput readonly value="0" />
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="small w-full col-span-2">
+          <mat-label>Turnover</mat-label>
+          <input matInput readonly value="£0.00" />
+        </mat-form-field>
+      </div>
+    </div>
+
+    <!-- Amount/turnover repair -->
+    <div class="flex flex-col sm:flex-row items-center justify-start gap-2 w-full">
+      <span class="sm:w-56 w-full text-sm font-medium text-left pb-2 sm:pb-0">
+        Amount/turnover repair:
+      </span>
+      <div class="grid grid-cols-3 gap-2 flex-1">
+        <mat-form-field appearance="outline" class="small w-full">
+          <mat-label>Amount</mat-label>
+          <input matInput readonly value="0" />
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="small w-full col-span-2">
+          <mat-label>Turnover</mat-label>
+          <input matInput readonly value="£0.00" />
+        </mat-form-field>
+      </div>
+    </div>
+
+    <!-- Amount/turnover sale pre -->
+    <div class="flex flex-col sm:flex-row items-center justify-start gap-2 w-full">
+      <span class="sm:w-56 w-full text-sm font-medium text-left pb-2 sm:pb-0">
+        Amount/turnover sale pre:
+      </span>
+      <div class="grid grid-cols-3 gap-2 flex-1">
+        <mat-form-field appearance="outline" class="small w-full">
+          <mat-label>Amount</mat-label>
+          <input matInput readonly value="0" />
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="small w-full col-span-2">
+          <mat-label>Turnover</mat-label>
+          <input matInput readonly value="£0.00" />
+        </mat-form-field>
+      </div>
+    </div>
+  </div>
+
+  <p class="text-sm sm:text-base text-left font-medium">Orders / Offers</p>
+  <div class="grid grid-cols-1 lg:grid-cols-2 gap-x-5 gap-y-5">
+    <!-- Open offers -->
+    <div class="flex flex-col sm:flex-row items-center align-center justify-start gap-2 w-full">
+      <span class="sm:w-30 w-full text-sm font-medium text-left pb-2 sm:pb-0">Open offers:</span>
+      <div class="grid grid-cols-3 gap-2 flex-1">
+        <mat-form-field appearance="outline" class="small w-full">
+          <mat-label>Number</mat-label>
+          <input matInput readonly value="0 Pcs." />
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="small w-full">
+          <mat-label>Quantity</mat-label>
+          <input matInput readonly value="0" />
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="small w-full">
+          <mat-label>Value</mat-label>
+          <input matInput readonly value="£0.00" />
+        </mat-form-field>
+      </div>
+    </div>
+
+    <!-- Open orders -->
+    <div class="flex flex-col sm:flex-row items-center align-center justify-start gap-2 w-full">
+      <span class="sm:w-30 w-full text-sm font-medium text-left pb-2 sm:pb-0">Open orders:</span>
+      <div class="grid grid-cols-3 gap-2 flex-1">
+        <mat-form-field appearance="outline" class="small w-full">
+          <mat-label>Number</mat-label>
+          <input matInput readonly value="0 Pcs." />
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="small w-full">
+          <mat-label>Quantity</mat-label>
+          <input matInput readonly value="0" />
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="small w-full">
+          <mat-label>Value</mat-label>
+          <input matInput readonly value="£0.00" />
+        </mat-form-field>
+      </div>
+    </div>
+
+    <!-- Postponed offers -->
+    <div class="flex flex-col sm:flex-row items-center align-center justify-start gap-2 w-full">
+      <span class="sm:w-30 w-full text-sm font-medium text-left pb-2 sm:pb-0"
+        >Postponed offers:</span
+      >
+      <div class="grid grid-cols-3 gap-2 flex-1">
+        <mat-form-field appearance="outline" class="small w-full">
+          <mat-label>Number</mat-label>
+          <input matInput readonly value="0 Pcs." />
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="small w-full">
+          <mat-label>Quantity</mat-label>
+          <input matInput readonly value="0" />
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="small w-full">
+          <mat-label>Value</mat-label>
+          <input matInput readonly value="£0.00" />
+        </mat-form-field>
+      </div>
+    </div>
+
+    <!-- Unpaid invoices -->
+    <div class="flex flex-col sm:flex-row items-center align-center justify-start gap-2 w-full">
+      <span class="sm:w-30 w-full text-sm font-medium text-left pb-2 sm:pb-0"
+        >Unpaid invoices:</span
+      >
+      <div class="grid grid-cols-3 gap-2 flex-1">
+        <mat-form-field appearance="outline" class="small w-full">
+          <mat-label>Number</mat-label>
+          <input matInput readonly value="1 Pcs." />
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="small w-full">
+          <mat-label>Quantity</mat-label>
+          <input matInput readonly value="1" />
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="small w-full">
+          <mat-label>Value</mat-label>
+          <input matInput readonly value="£645.84" />
+        </mat-form-field>
+      </div>
+    </div>
+
+    <!-- Buying frequency -->
+    <div class="flex flex-col sm:flex-row items-center align-center justify-start gap-2 w-full">
+      <span class="sm:w-30 w-full text-sm font-medium text-left pb-2 sm:pb-0"
+        >Buying frequency:</span
+      >
+      <div class="grid grid-cols-3 gap-2 flex-1">
+        <mat-form-field appearance="outline" class="small w-full" matTooltip="Till">
+          <mat-label>Till</mat-label>
+          <input matInput readonly value="27" />
+        </mat-form-field>
+        <mat-form-field
+          appearance="outline"
+          class="small w-full"
+          matTooltip="Sales Order Management"
+        >
+          <mat-label>Sales Order Management</mat-label>
+          <input matInput readonly value="1" />
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="small w-full" matTooltip="Online Shop">
+          <mat-label>Online Shop</mat-label>
+          <input matInput readonly value="0" />
+        </mat-form-field>
+      </div>
+    </div>
+
+    <!-- Reminders -->
+    <div class="flex flex-col sm:flex-row items-center align-center justify-start gap-2 w-full">
+      <span class="sm:w-30 w-full text-sm font-medium text-left pb-2 sm:pb-0"
+        >Reminders 1/2/3:</span
+      >
+      <div class="grid grid-cols-3 gap-2 flex-1">
+        <mat-form-field appearance="outline" class="small w-full" matTooltip="Reminder 1">
+          <mat-label>Reminder 1</mat-label>
+          <input matInput readonly value="0" />
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="small w-full" matTooltip="Reminder 2">
+          <mat-label>Reminder 2</mat-label>
+          <input matInput readonly />
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="small w-full" matTooltip="Reminder 3">
+          <mat-label>Reminder 3</mat-label>
+          <input matInput readonly />
+        </mat-form-field>
+      </div>
+    </div>
+
+    <!-- Customer type -->
+    <div class="flex flex-col sm:flex-row items-center align-center justify-start gap-2 w-full">
+      <span class="sm:w-30 w-full text-sm font-medium text-left pb-2 sm:pb-0">Customer type:</span>
+      <mat-form-field appearance="outline" class="small flex-1">
+        <input matInput readonly value="Articles" />
+      </mat-form-field>
+    </div>
+  </div>
+</form>

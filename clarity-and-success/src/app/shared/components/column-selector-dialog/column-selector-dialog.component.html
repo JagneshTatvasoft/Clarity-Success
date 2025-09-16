@@ -1,0 +1,16 @@
+<h2 mat-dialog-title>Select Columns</h2>
+
+<mat-dialog-content class="flex flex-wrap gap-4 p-2">
+  @for (col of columns; track col) {
+  <mat-checkbox [(ngModel)]="col.visible" class="w-1/2">
+    {{ col.label }}
+  </mat-checkbox>
+  }
+</mat-dialog-content>
+
+<mat-dialog-actions align="end" class="p-2">
+  <button mat-button (click)="selectAll()">Select All</button>
+  <button mat-button (click)="deselectAll()">Deselect All</button>
+  <button mat-button (click)="cancel()">Cancel</button>
+  <button mat-raised-button color="primary" (click)="save()">Save</button>
+</mat-dialog-actions>

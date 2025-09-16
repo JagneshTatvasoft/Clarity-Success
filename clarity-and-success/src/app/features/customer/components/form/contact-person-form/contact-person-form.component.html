@@ -1,0 +1,15 @@
+<div class="flex flex-col gap-4">
+  <app-custom-table
+    [dataSource]="customer"
+    [columns]="columns"
+    [isSelectable]="true"
+  ></app-custom-table>
+  <div class="flex justify-end">
+    <app-custom-button
+      label="Select Columns"
+      type="navigation"
+      variant="filled"
+      (click)="openColumnSelector()"
+    ></app-custom-button>
+  </div>
+</div>

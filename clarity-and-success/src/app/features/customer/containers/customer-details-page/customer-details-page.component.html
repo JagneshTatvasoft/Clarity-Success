@@ -1,0 +1,158 @@
+<form [formGroup]="customerDetailsForm" (ngSubmit)="SaveCustomerDetailsForm()" class="h-full">
+  <div class="flex flex-col text-center h-full gap-4">
+    <!-- customer bottom toolbar -->
+    <!-- <div class="bottom-navbar flex flex-col md:flex-row align-center gap-4">
+      <app-custom-button
+        label="Select Columns"
+        type="navigation"
+        variant="filled"
+        buttonType="submit"
+      ></app-custom-button>
+    </div> -->
+    <!-- customer details main content -->
+    <div class="flex flex-col gap-4 custom-card main-content">
+      <mat-accordion>
+        <mat-expansion-panel
+          expanded
+          (opened)="panelOpenState.set(true)"
+          (closed)="panelOpenState.set(false)"
+        >
+          <mat-expansion-panel-header>
+            <mat-panel-title>Basic Inormation</mat-panel-title>
+          </mat-expansion-panel-header>
+          <app-customer-basic-info-form [group]="basicInfoForm"></app-customer-basic-info-form>
+        </mat-expansion-panel>
+      </mat-accordion>
+
+      <mat-tab-group
+        fitInkBarToContent
+        mat-stretch-tabs="false"
+        mat-align-tabs="start"
+        animationDuration="0ms"
+      >
+        <mat-tab label="Further Data">
+          <ng-template matTabContent>
+            <div class="custom-card">
+              <app-customer-further-data-form
+                [group]="furtherData1Form"
+                (addCustomerClicked)="openCustomerSearchDialog()"
+                (removeCustomerClicked)="removeReferredCustomer()"
+              ></app-customer-further-data-form>
+            </div>
+          </ng-template>
+        </mat-tab>
+        <mat-tab label="Further Data 2">
+          <ng-template matTabContent>
+            <div class="custom-card px-0">
+              <app-customer-further-data2-form
+                [group]="furtherData2Form"
+              ></app-customer-further-data2-form>
+            </div>
+          </ng-template>
+        </mat-tab>
+        <mat-tab label="Contact Persons">
+          <ng-template matTabContent>
+            <div class="custom-card">
+              <app-contact-person-form></app-contact-person-form>
+            </div>
+          </ng-template>
+        </mat-tab>
+        <mat-tab label="Remarks">
+          <ng-template matTabContent>
+            <div class="custom-card">
+              <app-remark-form [group]="editorForm"></app-remark-form>
+            </div>
+          </ng-template>
+        </mat-tab>
+        <mat-tab label="Finances">
+          <ng-template matTabContent>
+            <div class="custom-card">
+              <app-customer-finances-form [group]="financeForm"></app-customer-finances-form>
+            </div>
+          </ng-template>
+        </mat-tab>
+        <mat-tab label="Statistics 1">
+          <ng-template matTabContent>
+            <div class="custom-card">
+              <app-customer-statistics1-form></app-customer-statistics1-form>
+            </div>
+          </ng-template>
+        </mat-tab>
+        <mat-tab label="Statistics 2">
+          <ng-template matTabContent>
+            <div class="custom-card">
+              <app-customer-statistics2-form></app-customer-statistics2-form>
+            </div>
+          </ng-template>
+        </mat-tab>
+        <mat-tab label="Correspondence/Appointments">
+          <ng-template matTabContent>
+            <div class="custom-card">
+              <app-customer-appointments-form></app-customer-appointments-form>
+            </div>
+          </ng-template>
+        </mat-tab>
+        <mat-tab label="Wholesales/Addresses">
+          <ng-template matTabContent>
+            <div class="custom-card">
+              <app-customer-addresses-form [group]="addressesForm"></app-customer-addresses-form>
+            </div>
+          </ng-template>
+        </mat-tab>
+      </mat-tab-group>
+    </div>
+
+    <div class="bottom-navbar flex flex-col md:flex-row align-center justify-between gap-4">
+      <div class="flex gap-2">
+        <app-custom-button
+          label="Add"
+          type="primary"
+          variant="filled"
+          buttonType="submit"
+        ></app-custom-button>
+        <app-custom-button
+          label="Edit"
+          type="primary"
+          variant="filled"
+          buttonType="submit"
+        ></app-custom-button>
+        <app-custom-button
+          label="Delete"
+          type="primary"
+          variant="filled"
+          buttonType="submit"
+        ></app-custom-button>
+      </div>
+      <div class="flex gap-2">
+        <app-custom-button
+          type="navigation"
+          variant="filled"
+          buttonType="button"
+          icon="first_page"
+        ></app-custom-button>
+        <app-custom-button
+          type="navigation"
+          variant="filled"
+          buttonType="button"
+          icon="chevron_left"
+        ></app-custom-button>
+        <app-custom-button
+          type="navigation"
+          variant="filled"
+          buttonType="button"
+          icon="chevron_right"
+        ></app-custom-button>
+        <app-custom-button
+          type="navigation"
+          variant="filled"
+          buttonType="button"
+          icon="last_page"
+        ></app-custom-button>
+      </div>
+
+      <!-- <button matMiniFab aria-label="Example icon button with a menu icon">
+        <mat-icon>menu</mat-icon>
+      </button> -->
+    </div>
+  </div>
+</form>

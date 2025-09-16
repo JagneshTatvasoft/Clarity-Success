@@ -1,0 +1,177 @@
+<form [formGroup]="group" class="flex flex-col justify-start gap-4 further-data2-form">
+
+  <!-- Bank Details -->
+  <p class="text-sm sm:text-base text-left font-medium">Bank Details</p>
+  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-x-2 gap-y-5">
+    <div>
+      <mat-form-field appearance="outline" class="w-full small">
+        <mat-label>Account holder</mat-label>
+        <input matInput formControlName="accountHolder" required />
+      </mat-form-field>
+    </div>
+
+    <div>
+      <mat-form-field appearance="outline" class="w-full small">
+        <mat-label>IBAN</mat-label>
+        <input matInput formControlName="iban" required />
+      </mat-form-field>
+    </div>
+
+    <div>
+      <mat-form-field appearance="outline" class="w-full small">
+        <mat-label>BIC</mat-label>
+        <input matInput formControlName="bic" />
+      </mat-form-field>
+    </div>
+
+    <div>
+      <mat-form-field appearance="outline" class="w-full small">
+        <mat-label>Bank</mat-label>
+        <input matInput formControlName="bank" />
+      </mat-form-field>
+    </div>
+
+    <div>
+      <mat-form-field appearance="outline" class="w-full small">
+        <mat-label>Account No.</mat-label>
+        <input matInput formControlName="accountNo" />
+      </mat-form-field>
+    </div>
+
+    <div>
+      <mat-form-field appearance="outline" class="w-full small">
+        <mat-label>Sort code</mat-label>
+        <input matInput formControlName="sortCode" />
+      </mat-form-field>
+    </div>
+
+    <div>
+      <mat-form-field appearance="outline" class="w-full small">
+        <mat-label>Mandate reference</mat-label>
+        <input matInput formControlName="mandateReference" />
+      </mat-form-field>
+    </div>
+
+    <div>
+      <mat-form-field appearance="outline" class="w-full small">
+        <mat-label>Mandate ref. date</mat-label>
+        <input matInput type="date" formControlName="mandateDate" />
+      </mat-form-field>
+    </div>
+
+    <div>
+      <mat-form-field appearance="outline" class="w-full small">
+        <mat-label>Mandate ref. type</mat-label>
+        <mat-select formControlName="mandateType">
+          <mat-option value="type1">Type 1</mat-option>
+          <mat-option value="type2">Type 2</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+  </div>
+
+  <!-- Payment & VAT -->
+  <p class="text-sm sm:text-base text-left font-medium">Payment & VAT</p>
+  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-x-2 gap-y-5">
+    <div>
+      <mat-form-field appearance="outline" class="w-full small">
+        <mat-label>Payment condition</mat-label>
+        <mat-select formControlName="paymentCondition">
+          <mat-option value="net30">Net 30</mat-option>
+          <mat-option value="net60">Net 60</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <div>
+      <mat-form-field appearance="outline" class="w-full small">
+        <mat-label>Delivery method</mat-label>
+        <input matInput formControlName="deliveryMethod" />
+      </mat-form-field>
+    </div>
+
+    <div>
+      <mat-form-field appearance="outline" class="w-full small">
+        <mat-label>VAT ID No.</mat-label>
+        <input matInput formControlName="vatId" />
+      </mat-form-field>
+    </div>
+
+    <div>
+      <mat-form-field appearance="outline" class="w-full small">
+        <mat-label>Company No.</mat-label>
+        <input matInput formControlName="companyNo" />
+      </mat-form-field>
+    </div>
+
+    <div>
+      <mat-form-field appearance="outline" class="w-full small">
+        <mat-label>Debtor No.</mat-label>
+        <input matInput formControlName="debtorNo" value="50090" />
+      </mat-form-field>
+    </div>
+
+    <div>
+      <mat-form-field appearance="outline" class="w-full small">
+        <mat-label>Creditor No.</mat-label>
+        <input matInput formControlName="creditorNo" value="10090" />
+      </mat-form-field>
+    </div>
+
+    <div>
+      <mat-form-field appearance="outline" class="w-full small">
+        <mat-label>VAT / currency</mat-label>
+        <mat-select formControlName="vatCurrency">
+          <mat-option value="articles">Articles</mat-option>
+          <mat-option value="services">Services</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <div>
+      <mat-form-field appearance="outline" class="w-full small">
+        <mat-label>Discount 1 in %</mat-label>
+        <input matInput type="number" formControlName="discount1" />
+      </mat-form-field>
+    </div>
+
+    <div>
+      <mat-form-field appearance="outline" class="w-full small">
+        <mat-label>Discount 2 in %</mat-label>
+        <input matInput type="number" formControlName="discount2" />
+      </mat-form-field>
+    </div>
+  </div>
+
+  <!-- Credit & Finance -->
+  <p class="text-sm sm:text-base text-left font-medium">Credit & Finance</p>
+  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-x-2 gap-y-5">
+    <div>
+      <mat-form-field appearance="outline" class="w-full small">
+        <mat-label>Credit limit</mat-label>
+        <input matInput type="number" formControlName="creditLimit" />
+      </mat-form-field>
+    </div>
+
+    <div>
+      <mat-form-field appearance="outline" class="w-full small">
+        <mat-label>RP type</mat-label>
+        <input matInput formControlName="rpType" />
+      </mat-form-field>
+    </div>
+
+    <div class="flex flex-col sm:flex-row gap-2 justify-start col-span-full">
+      <mat-checkbox formControlName="remind">Remind</mat-checkbox>
+      <mat-checkbox formControlName="blocked">Blocked</mat-checkbox>
+      <mat-checkbox formControlName="invoiceEmail">Inv. via email</mat-checkbox>
+      <mat-checkbox formControlName="pledgeBlocked">Pledge Blocked</mat-checkbox>
+    </div>
+  </div>
+
+  <div>
+    <mat-form-field appearance="outline" class="w-full small">
+      <mat-label>Comment about finances</mat-label>
+      <textarea matInput rows="4" formControlName="financeComment"></textarea>
+    </mat-form-field>
+  </div>
+</form>
