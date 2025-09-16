@@ -1,9 +1,34 @@
+using ClarityAndSuccess.Application.Interface;
+using ClarityAndSuccess.Application.Service;
+using ClarityAndSuccess.Domain.Data;
+using ClarityAndSuccess.Infrastructure.Interface;
+using ClarityAndSuccess.Infrastructure.Mapping;
+using ClarityAndSuccess.Infrastructure.Repository;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+builder.Services.AddDbContext<ClarityAndSuccessDBContext>(options =>
+                options.UseSqlServer(builder.Configuration.GetConnectionString("JeweltabYunoDB")));
+builder.Services.AddControllers();
+
+// for returning validation error in ApiResponse Formate
+// builder.Services.Configure<ApiBehaviorOptions>(options =>
+// {
+//     var isDev = builder.Environment.IsDevelopment();
+
+//     options.InvalidModelStateResponseFactory = context =>
+//         ValidationConvertor.CreateValidationErrorResponse(context, isDev);
+// });
+
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+builder.Services.AddAutoMapper(typeof(IAutoMapper).Assembly);
+builder.Services.AddScoped<ICustomerService, CustomerService>();
+builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
 
 var app = builder.Build();
 
@@ -14,31 +39,9 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.UseHttpsRedirection();
+// app.UseHttpsRedirection();
+app.UseAuthentication();
+app.UseAuthorization();
 
-var summaries = new[]
-{
-    "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-};
-
-app.MapGet("/weatherforecast", () =>
-{
-    var forecast =  Enumerable.Range(1, 5).Select(index =>
-        new WeatherForecast
-        (
-            DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
-            Random.Shared.Next(-20, 55),
-            summaries[Random.Shared.Next(summaries.Length)]
-        ))
-        .ToArray();
-    return forecast;
-})
-.WithName("GetWeatherForecast")
-.WithOpenApi();
-
+app.MapControllers();
 app.Run();
-
-record WeatherForecast(DateOnly Date, int TemperatureC, string? Summary)
-{
-    public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
-}

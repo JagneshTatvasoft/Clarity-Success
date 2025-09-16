@@ -9,7 +9,7 @@ namespace ClarityAndSuccess.Entities.Models;
 [Table("Kunden")]
 [Index("DebtorNumber", Name = "IX_Kunden_DebitorenNr")]
 [Index("Company", Name = "IX_Kunden_Firma")]
-[Index("CustomerCardNumberExt", Name = "IX_Kunden_KundenKartenNrExt")]
+[Index("CustomerCardType", Name = "IX_Kunden_KundenKartenNrExt")]
 [Index("LastName", Name = "IX_Kunden_Nachname")]
 public partial class Customer
 {
@@ -53,7 +53,7 @@ public partial class Customer
 
     [StringLength(50)]
     [Column("Adresszusatz")]
-    public string AddressSuffix { get; set; } = "";
+    public string AddressSupplement { get; set; } = "";
 
     [Column("PLZ")]
     [StringLength(12)]
@@ -173,7 +173,7 @@ public partial class Customer
 
     [StringLength(20)]
     [Column("Beruf")]
-    public string Occupation { get; set; } = "";
+    public string Profession { get; set; } = "";
 
     [StringLength(30)]
     [Column("Hobby")]
@@ -184,7 +184,7 @@ public partial class Customer
 
     [StringLength(20)]
     [Column("KundenKartenNrExt")]
-    public string CustomerCardNumberExt { get; set; } = "";
+    public string CustomerCardType { get; set; } = "";
 
     [Column("KundenNrVermittler")]
     public long AgentCustomerNumber { get; set; }
@@ -228,10 +228,10 @@ public partial class Customer
     public bool IsPrivacyDeclaration { get; set; }
 
     [Column("PersonalNrAussendienst")]
-    public long FieldStaffPersonnelNumber { get; set; }
+    public long StaffFieldServiceNumber { get; set; }
 
     [Column("PersonalNrAnsprechpartner")]
-    public long ContactPersonPersonnelNumber { get; set; }
+    public long StaffContactPersonNumber { get; set; }
 
     [Column("ZahlBedNr")]
     public int PaymentConditionNumber { get; set; }

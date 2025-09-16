@@ -13,6 +13,5 @@ public partial class ClarityAndSuccessDBContext : DbContext
     }
 
     public virtual DbSet<Customer> Customers { get; set; }
-
    
 }
