@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using ClarityAndSuccess.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 
 namespace ClarityAndSuccess.Entities.Models;
@@ -425,6 +426,6 @@ public partial class Customer
     [Column("IsVerpfandungGesperrt")]
     public bool IsPledgingBlocked { get; set; }
 
-    // [InverseProperty("KundenNrNavigation")]
-    // public virtual ICollection<KundenAnsprechpartner> KundenAnsprechpartners { get; set; } = new List<KundenAnsprechpartner>();
+    [InverseProperty("KundenNrNavigation")]
+    public virtual ICollection<CustomerContactPerson> KundenAnsprechpartners { get; set; } = new List<CustomerContactPerson>();
 }

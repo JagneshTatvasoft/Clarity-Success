@@ -8,23 +8,31 @@ public class CustomerProfile : Profile
 {
     public CustomerProfile()
     {
-        CreateMap<Customer, AddUpdateCustomerDTO>().ReverseMap()
-            // Example: If DateOfBirth in DTO is string and in entity it's DateTime? 
+
+        // Entity -> DTO
+        CreateMap<Customer, AddUpdateCustomerDTO>()
             .ForMember(dest => dest.DateOfBirth,
-                opt => opt.MapFrom(src =>
-                    string.IsNullOrEmpty(src.DateOfBirth) ? (DateTime?)null : DateTime.Parse(src.DateOfBirth)))
-
+                opt => opt.MapFrom(src => src.DateOfBirth.HasValue
+                                           ? src.DateOfBirth.Value.ToString("yyyy-MM-dd")
+                                           : string.Empty))
             .ForMember(dest => dest.PartnerDateOfBirth,
-                opt => opt.MapFrom(src =>
-                    string.IsNullOrEmpty(src.PartnerDateOfBirth) ? (DateTime?)null : DateTime.Parse(src.PartnerDateOfBirth)))
+                opt => opt.MapFrom(src => src.PartnerDateOfBirth.HasValue
+                                           ? src.PartnerDateOfBirth.Value.ToString("yyyy-MM-dd")
+                                           : string.Empty));
 
-            // Example: If VAT obligated depends on VatGroupNumber
+        // DTO -> Entity
+        CreateMap<AddUpdateCustomerDTO, Customer>()
+            .ForMember(dest => dest.DateOfBirth,
+                opt => opt.MapFrom(src => string.IsNullOrWhiteSpace(src.DateOfBirth)
+                                           ? (DateTime?)null
+                                           : DateTime.Parse(src.DateOfBirth)))
+            .ForMember(dest => dest.PartnerDateOfBirth,
+                opt => opt.MapFrom(src => string.IsNullOrWhiteSpace(src.PartnerDateOfBirth)
+                                           ? (DateTime?)null
+                                           : DateTime.Parse(src.PartnerDateOfBirth)))
             .ForMember(dest => dest.IsVatObligated,
                 opt => opt.MapFrom(src => src.VatGroupNumber != 0))
-
-            // Example: If OwnCustomerPassword needs default value
             .ForMember(dest => dest.OwnCustomerPassword,
-                opt => opt.MapFrom(src => src.OwnCustomerPassword ?? string.Empty))
-                ;
+                opt => opt.MapFrom(src => src.OwnCustomerPassword ?? string.Empty));
     }
 }

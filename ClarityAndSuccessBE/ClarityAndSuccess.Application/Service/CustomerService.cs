@@ -4,17 +4,23 @@ using ClarityAndSuccess.Application.Interface;
 using ClarityAndSuccess.Entities.Models;
 using ClarityAndSuccess.Infrastructure.DTO;
 using ClarityAndSuccess.Infrastructure.Interface;
+using System.Linq;
+using System.Diagnostics.CodeAnalysis;
 
 namespace ClarityAndSuccess.Application.Service;
 
-public class CustomerService(IGenericRepository<Customer> customerRepository,IMapper mapper) : ICustomerService
+public class CustomerService(IGenericRepository<Customer> customerRepository, IGenericRepository<MasterData> masterDataRepository, IGenericRepository<BranchCustomerNumber> branchCustomerNumberRepository, IGenericRepository<Branch> branchRepository, IMapper mapper) : ICustomerService
 {
+    private readonly IGenericRepository<Branch> _branchRepository = branchRepository;
+    private readonly IGenericRepository<BranchCustomerNumber> _branchCustomerNumberRepository = branchCustomerNumberRepository;
+    private readonly IGenericRepository<MasterData> _masterDataRepository = masterDataRepository;
+
     private readonly IGenericRepository<Customer> _customerRepository = customerRepository;
     private readonly IMapper _mapper = mapper;
 
     public async Task<AddUpdateCustomerDTO?> GetCustomerByIdAsync(long customerNumber)
     {
-        var customer = await _customerRepository.GetFirstOrDefaultAsync<AddUpdateCustomerDTO>(filter: f => f.CustomerNumber == customerNumber,mapperConfig: _mapper.ConfigurationProvider);
+        var customer = await _customerRepository.GetFirstOrDefaultProjectedAsync<AddUpdateCustomerDTO>(filter: f => f.CustomerNumber == customerNumber, mapperConfig: _mapper.ConfigurationProvider);
 
         if (customer == null)
             return null;
@@ -42,7 +48,7 @@ public class CustomerService(IGenericRepository<Customer> customerRepository,IMa
 
         // Save customer appointment for his birthday & partner birthday
         // csAppointmentSettings.CreateOrUpdateAppointmentWhenSavingCustomer
-        // Usea above thing if createOrUpdateAppointmentWhenSavingCustomer is tru
+        // Usea above thing if createOrUpdateAppointmentWhenSavingCustomer is true
         if (false)
         {
             // Customer Birthday
@@ -78,6 +84,9 @@ public class CustomerService(IGenericRepository<Customer> customerRepository,IMa
         }
 
         // Save contact person
+        // await SaveContactPersonsAsync();
+        // await SaveCreationDate();
+
 
 
         return false;
@@ -189,7 +198,7 @@ public class CustomerService(IGenericRepository<Customer> customerRepository,IMa
     //     await _dbContext.SaveChangesAsync();
     // }
 
-    //Save customer relatedAppointment
+    // Save customer relatedAppointment
     // private int SaveCustomerRelatedAppointment(
     // SqlConnection connection,
     // long customerId,
@@ -283,7 +292,7 @@ public class CustomerService(IGenericRepository<Customer> customerRepository,IMa
         }
         else
         {
-            objCurrentCustomer = await _customerRepository.GetByIdAsync(filter: f => f.CustomerNumber == customerDTO.CustomerNumber);
+            objCurrentCustomer = await _customerRepository.GetFirstOrDefaultAsync(filter: f => f.CustomerNumber == customerDTO.CustomerNumber);
             bISAddressChanged =
             objCurrentCustomer!.Street != customerDTO.Street ||
             objCurrentCustomer.AddressSupplement != customerDTO.AddressSupplement ||
@@ -294,7 +303,7 @@ public class CustomerService(IGenericRepository<Customer> customerRepository,IMa
             objCurrentCustomer.Country != customerDTO.Country;
         }
 
-        _mapper.Map(customerDTO,objCurrentCustomer);
+        _mapper.Map(customerDTO, objCurrentCustomer);
 
         // objCurrentCustomer.BranchNumber = customerDTO.BranchNumber;
         // objCurrentCustomer.OwnCustomerNumber = customerDTO.OwnCustomerNumber;
@@ -441,10 +450,10 @@ public class CustomerService(IGenericRepository<Customer> customerRepository,IMa
         //     objCurrentCustomer.ArticleLanguageNumber = customerDTO.ArticleLanguageNumber;
         // }
 
-        if (objCurrentCustomer == null)
+        if (customerDTO.CustomerNumber == 0)
         {
-            // objCurrentCustomer.CustomerNumber = GetNextCustomerNumber(cn);
-            // objCurrentCustomer.CreatedDate = DateTime.Now;
+            objCurrentCustomer.CustomerNumber = await GetNextCustomerNumber();
+            objCurrentCustomer.CreatedDate = DateTime.Now;
             // objCurrentCustomer.CreatedByInitials = localLogin.Initials;
             // objCurrentCustomer.CreatedByNumber = localLogin.PersonnelNumber;
         }
@@ -457,26 +466,116 @@ public class CustomerService(IGenericRepository<Customer> customerRepository,IMa
 
         objCurrentCustomer.IsAvInvoiceViaEmail = customerDTO.IsAvInvoiceViaEmail;
 
-        // if (isBranchGreen) // Only for green branch
-        // {
-        //     // Price display gross
-        //     if (chkPriceDisplayGross.Checked)
-        //     {
-        //         objCurrentCustomer.IsPriceDisplayGross = true;
-        //     }
-        //     else
-        //     {
-        //         objCurrentCustomer.IsPriceDisplayGross = false;
-        //     }
-        // }
+        bool isBranchGreen = false;
+        if (isBranchGreen) // Only for green branch
+        {
+            // Price display gross
+            if (customerDTO.PriceDisplayGross)
+            {
+                objCurrentCustomer.IsPriceDisplayGross = true;
+            }
+            else
+            {
+                objCurrentCustomer.IsPriceDisplayGross = false;
+            }
+        }
 
         // this is for log
         // customerObj.InitLogData(csTableLog.Areas.Processing, this.localLogin.PersonnelNumber);
         // End If
 
-        Customer objCustomer = await _customerRepository.AddEntityAsync(objCurrentCustomer);
+        // Here we need to put catch if it not add correctly
+        await _customerRepository.AddAsync(objCurrentCustomer);
 
-        return objCustomer.CustomerNumber;
+        return objCurrentCustomer.CustomerNumber;
+    }
+
+    private async Task<long> GetNextCustomerNumber()
+    {
+        long lNextCustomerNumber = 0;
+
+        // Default number range
+        bool bIsCustomerNumberActive = true;
+        long lNumberRangeFrom = 1;
+        long lNumberRangeTo = long.MaxValue;
+
+        var result = await _branchCustomerNumberRepository.GetFirstOrDefaultSelectAsync(
+            filter: f => f.BranchNumberNavigation.IsOwn == true,
+            selector: s => new { s.IsActive, s.CustomerNumberFrom, s.CustomerNumberTo });
+
+        if (result != null)
+        {
+            bIsCustomerNumberActive = result.IsActive;
+            lNumberRangeFrom = result.CustomerNumberFrom;
+            lNumberRangeTo = result.CustomerNumberTo;
+        }
+
+        if (!bIsCustomerNumberActive)
+        {
+            return lNextCustomerNumber;
+        }
+
+        if (lNumberRangeFrom > lNumberRangeTo)
+        {
+            lNumberRangeFrom = lNumberRangeTo;
+        }
+
+        lNextCustomerNumber = lNumberRangeFrom;
+
+        long lCustomerNoFromMasterData = 0;
+        long lCustomerNoFromCustomers = 0;
+
+        // Last customer number from customer number 
+        // Here check if there is no data ome then did not assign to this one
+        var CustomerNumberResult = await _customerRepository.GetFirstOrDefaultSelectAsync(
+            filter: f => f.CustomerNumber >= lNumberRangeFrom && f.CustomerNumber <= lNumberRangeTo,
+            orderBy: o => o.OrderByDescending(c => c.CustomerNumber),
+            selector: s => s.CustomerNumber
+        );
+        if (CustomerNumberResult != 0)
+        {
+            lCustomerNoFromCustomers = CustomerNumberResult;
+        }
+        var MasterDataResult = await _masterDataRepository.GetFirstOrDefaultSelectAsync(
+            filter: f => f.Description == "KundenNr",
+            selector: s => s.Data1
+        );
+        if (!string.IsNullOrEmpty(MasterDataResult) && long.TryParse(MasterDataResult, out var parsed))
+        {
+            lCustomerNoFromMasterData = parsed;
+        }
+
+        if (lNextCustomerNumber <= lCustomerNoFromCustomers)
+        {
+            lNextCustomerNumber = lCustomerNoFromCustomers + 1;
+        }
+        if (lNextCustomerNumber <= lCustomerNoFromMasterData)
+        {
+            lNextCustomerNumber = lCustomerNoFromMasterData + 1;
+        }
+
+        // update the counter in master data
+        var existingMasterData = await _masterDataRepository.GetFirstOrDefaultAsync(
+            filter: f => f.Description == "KundenNr"
+        );
+
+        if (existingMasterData != null)
+        {
+            existingMasterData.Data1 = lNextCustomerNumber.ToString();
+            await _masterDataRepository.UpdateAsync(existingMasterData);
+        }
+        else
+        {
+            MasterData newMasterData = new MasterData
+            {
+                Description = "KundenNr",
+                Data1 = lNextCustomerNumber.ToString()
+            };
+
+            await _masterDataRepository.AddAsync(newMasterData);
+        }
+
+        return lNextCustomerNumber;
     }
 
 }
