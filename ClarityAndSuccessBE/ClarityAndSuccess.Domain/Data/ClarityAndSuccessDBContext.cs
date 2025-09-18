@@ -18,5 +18,8 @@ public partial class ClarityAndSuccessDBContext : DbContext
     public virtual DbSet<BranchCustomerNumber> BranchCustomerNumbers { get; set; }
     public virtual DbSet<MasterData> MasterDatas { get; set; }
     public virtual DbSet<CustomerContactPerson> CustomerContactPersons { get; set; }
+    public virtual DbSet<Appointment> Appointments { get; set; }
+    public virtual DbSet<AppointmentEvent> AppointmentEvents { get; set; }
+    public virtual DbSet<Tvlabel> Tvlabels { get; set; }
    
 }

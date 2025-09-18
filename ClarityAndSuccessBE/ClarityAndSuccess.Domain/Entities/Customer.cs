@@ -123,7 +123,7 @@ public partial class Customer
     public string Homepage { get; set; } = "";
 
     [Column("Geburtsdatum")]
-    public DateTime? DateOfBirth { get; set; }
+    public string DateOfBirth { get; set; } = "";
 
     [Column("IsEigenerKunde")]
     public bool IsOwnCustomer { get; set; }
@@ -334,7 +334,7 @@ public partial class Customer
     public string PartnerLastName { get; set; } = "";
 
     [Column("PartnerGeburtsdatum")]
-    public DateTime? PartnerDateOfBirth { get; set; }
+    public string PartnerDateOfBirth { get; set; } = "";
 
     [Column("IsOnlineShop")]
     public bool IsOnlineShopCustomer { get; set; }

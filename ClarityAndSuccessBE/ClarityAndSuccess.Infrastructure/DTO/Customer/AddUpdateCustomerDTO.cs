@@ -1,4 +1,6 @@
 using System.ComponentModel.DataAnnotations;
+using ClarityAndSuccess.Infrastructure.DTO.CustomerContactPerson;
+using ClarityAndSuccess.Infrastructure.DTO.Global;
 
 namespace ClarityAndSuccess.Infrastructure.DTO;
 
@@ -53,6 +55,8 @@ public class AddUpdateCustomerDTO
     public bool IsOwnCustomer { get; set; } = false;
     public string OwnCustomerPassword { get; set; } = string.Empty;
 
+    public List<PictureDTO> customerPictures = new List<PictureDTO>();
+
     // Categories
     public string Category1 { get; set; } = string.Empty;
     public string Category2 { get; set; } = string.Empty;
@@ -79,6 +83,9 @@ public class AddUpdateCustomerDTO
     public string IdentificationNumber { get; set; } = string.Empty;
     public string IssuingAuthority { get; set; } = string.Empty;
     public string ProofOfAddress { get; set; } = string.Empty;
+
+    //Contcat Person
+    public List<CustomerContactPersonDTO> ContactPersonList { get; set; } = new List<CustomerContactPersonDTO>();
 
     // Partner
     public string PartnerSalutation { get; set; } = string.Empty;

@@ -164,5 +164,27 @@ public class GenericRepository<T>(ClarityAndSuccessDBContext context, IConfigura
         await _context.SaveChangesAsync();
     }
 
+    // Delete Async
+    public virtual async Task DeleteAsync(T entity)
+    {
+        if (entity == null) throw new ArgumentNullException(nameof(entity), "Entity cannot be null.");
+        _dbSet.Remove(entity);
+        await _context.SaveChangesAsync();
+    }
+
+    //Delete Range Async
+    public virtual async Task DeleteRangeAsync(IEnumerable<T> entities)
+    {
+        if (entities == null || !entities.Any())
+            throw new ArgumentNullException(nameof(entities), "Entity list cannot be null or empty.");
+        _dbSet.RemoveRange(entities);
+        await _context.SaveChangesAsync();
+    }
+
+    //Save Changes
+    public async Task<int> SaveChangesAsync()
+    {
+        return await _context.SaveChangesAsync();
+    }
 
 }

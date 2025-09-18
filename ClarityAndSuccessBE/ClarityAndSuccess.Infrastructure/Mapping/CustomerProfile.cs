@@ -10,15 +10,15 @@ public class CustomerProfile : Profile
     {
 
         // Entity -> DTO
-        CreateMap<Customer, AddUpdateCustomerDTO>()
-            .ForMember(dest => dest.DateOfBirth,
-                opt => opt.MapFrom(src => src.DateOfBirth.HasValue
-                                           ? src.DateOfBirth.Value.ToString("yyyy-MM-dd")
-                                           : string.Empty))
-            .ForMember(dest => dest.PartnerDateOfBirth,
-                opt => opt.MapFrom(src => src.PartnerDateOfBirth.HasValue
-                                           ? src.PartnerDateOfBirth.Value.ToString("yyyy-MM-dd")
-                                           : string.Empty));
+        // CreateMap<Customer, AddUpdateCustomerDTO>()
+        //     .ForMember(dest => dest.DateOfBirth,
+        //         opt => opt.MapFrom(src => src.DateOfBirth.HasValue
+        //                                    ? src.DateOfBirth.Value.ToString("yyyy-MM-dd")
+        //                                    : string.Empty))
+        //     .ForMember(dest => dest.PartnerDateOfBirth,
+        //         opt => opt.MapFrom(src => src.PartnerDateOfBirth.HasValue
+        //                                    ? src.PartnerDateOfBirth.Value.ToString("yyyy-MM-dd")
+        //                                    : string.Empty));
 
         // DTO -> Entity
         CreateMap<AddUpdateCustomerDTO, Customer>()
