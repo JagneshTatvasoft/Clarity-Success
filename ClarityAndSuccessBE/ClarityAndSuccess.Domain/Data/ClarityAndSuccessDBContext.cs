@@ -21,5 +21,6 @@ public partial class ClarityAndSuccessDBContext : DbContext
     public virtual DbSet<Appointment> Appointments { get; set; }
     public virtual DbSet<AppointmentEvent> AppointmentEvents { get; set; }
     public virtual DbSet<Tvlabel> Tvlabels { get; set; }
+    public virtual DbSet<ArticleMasterData> ArticleMasterDatas { get; set; }
    
 }

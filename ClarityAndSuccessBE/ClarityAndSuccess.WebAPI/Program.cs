@@ -28,6 +28,7 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddAutoMapper(typeof(IAutoMapper).Assembly);
 builder.Services.AddScoped<ICustomerService, CustomerService>();
+builder.Services.AddScoped<IDropDownService, DropDownService>();
 builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
 
 var app = builder.Build();
